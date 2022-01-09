@@ -1,2 +1,2 @@
 # Finances
-Hi! This is a analysis of my personal finances as a broke college student. Enjoy!
+I perfomred a linear regression anlysis on my personal finanes. This could be used to predict my spending habits in the future and could even show me what I spend my hard earned cash on (groceries, entertainment, etc).
