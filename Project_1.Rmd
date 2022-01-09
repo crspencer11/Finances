@@ -1,0 +1,52 @@
+---
+title: "Project 1"
+author: "Chris Spencer"
+date: "1/9/2022"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lubridate)
+```
+
+```{r}
+financials <- read_csv("credit.CSV")
+```
+
+```{r, eval=FALSE}
+model <- lm(Amount ~ `Transaction Date`, data = financials)
+summary(model)
+```
+
+```{r}
+financials %>%
+  filter(Type == "Payment")
+
+ggplot(financials, aes(x = as.Date(`Transaction Date`, "%m/%d/%y"), y = Amount))+
+  geom_point()+
+  geom_smooth(method = "lm", color = "red")+
+  labs(
+    title = "I'm Broke",
+    x = "Payment Date",
+    y = "Amount"
+  )+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+```{r}
+model2 <- glm(Amount ~ Type, data = financials)
+summary(model2)
+```
+
+```{r}
+ggplot(financials, aes(x = Amount, y = Type))+
+  geom_point()+
+  geom_smooth(method = "lm", color = "red")
+```
+
+
+
